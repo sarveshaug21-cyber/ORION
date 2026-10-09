@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.node.json",
+  "compilerOptions": {
+    "outDir": "dist/server",
+    "declaration": true,
+    "noEmit": false,
+    "allowImportingTsExtensions": false
+  },
+  "include": ["src/server/**/*", "src/database/**/*", "src/ai/**/*", "src/tools/**/*", "src/skills/**/*", "src/features/**/*", "src/agent/**/*", "src/assistant/**/*", "src/lib/**/*", "src/types/**/*"]
+}

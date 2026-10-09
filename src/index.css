@@ -1,0 +1,212 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 10 15 26;
+    --foreground: 241 245 249;
+    --muted: 100 116 139;
+    --accent: 6 182 212;
+    --border: 30 41 59;
+    --orion-accent: #06b6d4;
+  }
+
+  * {
+    @apply border-orion-border;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-orion-bg text-orion-text font-sans antialiased;
+    font-feature-settings: 'ss01', 'ss02', 'kern';
+    letter-spacing: -0.01em;
+  }
+
+  ::selection {
+    @apply bg-orion-accent/30 text-orion-text;
+  }
+
+  ::-webkit-scrollbar {
+    @apply w-2 h-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-orion-borderLight rounded-full hover:bg-orion-textMuted;
+  }
+
+  ::-webkit-scrollbar-corner {
+    @apply bg-transparent;
+  }
+
+  kbd {
+    font-family: inherit;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-orion-bgSecondary/90 border border-orion-border/60;
+  }
+
+  .glass-strong {
+    @apply bg-orion-bgSecondary border border-orion-border;
+  }
+
+  .panel {
+    @apply bg-orion-bgSecondary/80 border border-orion-border rounded-xl overflow-hidden;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-orion-accent/50 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-primary {
+    @apply btn bg-orion-accent text-orion-bg hover:bg-orion-accentGlow active:scale-[0.98];
+  }
+
+  .btn-secondary {
+    @apply btn bg-orion-bgTeritary text-orion-text hover:bg-orion-borderLight active:scale-[0.98] border border-orion-border;
+  }
+
+  .btn-ghost {
+    @apply btn bg-transparent text-orion-textDim hover:text-orion-text hover:bg-orion-bgTeritary active:scale-[0.98];
+  }
+
+  .btn-danger {
+    @apply btn bg-orion-error/20 text-orion-error hover:bg-orion-error/30 active:scale-[0.98] border border-orion-error/30;
+  }
+
+  .input {
+    @apply w-full px-3.5 py-2.5 rounded-lg bg-orion-bgTeritary border border-orion-border text-orion-text placeholder-orion-textMuted focus:outline-none focus:border-orion-accent focus:ring-2 focus:ring-orion-accent/20 transition-all duration-200;
+  }
+
+  .input-error {
+    @apply input border-orion-error focus:border-orion-error focus:ring-orion-error/20;
+  }
+
+  .label {
+    @apply block text-sm font-medium text-orion-textDim mb-1.5;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md text-xs font-medium;
+  }
+
+  .badge-info {
+    @apply badge bg-orion-accent/15 text-orion-accent border border-orion-accent/20;
+  }
+
+  .badge-success {
+    @apply badge bg-orion-success/15 text-orion-success border border-orion-success/20;
+  }
+
+  .badge-warning {
+    @apply badge bg-orion-warning/15 text-orion-warning border border-orion-warning/20;
+  }
+
+  .badge-error {
+    @apply badge bg-orion-error/15 text-orion-error border border-orion-error/20;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .animate-in {
+    animation: fadeIn 0.3s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.2s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from { transform: translateY(8px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+
+  @keyframes scaleIn {
+    from { transform: scale(0.97); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+
+  .focus-ring {
+    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-orion-accent/50 focus-visible:ring-offset-2 focus-visible:ring-offset-orion-bg;
+  }
+}
+
+.cmdk-overlay {
+  @apply fixed inset-0 z-50 bg-black/55 backdrop-blur-[2px];
+}
+
+.cmdk-input {
+  @apply bg-transparent border-none text-orion-text placeholder-orion-textMuted focus:outline-none w-full text-base;
+}
+
+.cmdk-item {
+  @apply flex items-center gap-3 mx-2 px-3 py-2.5 rounded-lg text-sm text-orion-textDim cursor-pointer transition-colors;
+}
+
+.cmdk-item[aria-selected="true"] {
+  @apply bg-orion-accent/10 text-orion-accent;
+}
+
+.cmdk-group-heading {
+  @apply px-4 py-2 text-[11px] font-semibold text-orion-textMuted uppercase tracking-[0.14em];
+}
+
+.cmdk-empty {
+  @apply px-4 py-8 text-center text-orion-textMuted text-sm;
+}
+
+.spinner {
+  @apply w-5 h-5 border-2 border-orion-border border-t-orion-accent rounded-full animate-spin;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgb(51 65 85 / 0.5);
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgb(100 116 139 / 0.8);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
